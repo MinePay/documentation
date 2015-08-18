@@ -30,6 +30,27 @@ A `Product` object has the following attributes:
             "cost": 2.50
         }
         
+### Update Product [PUT]
+        
+Update the properties of a `Product`, you only need to provide the properties you
+want to update, omitting the others is fine.
+
++ Request (application/json)
+
+        {
+            "name": "Updated Name",
+            "cost": 5.00
+        }
+
++ Response 200 (application/json)
+
+        {
+            "updated": [
+                "name",
+                "cost"
+            ]
+        }
+
 ### Delete Product [DELETE]
 
 + Response 200 (application/json)
@@ -104,4 +125,3 @@ A `Product` object has the following attributes:
                 "cost": 0.00
             }
         ]
-    
