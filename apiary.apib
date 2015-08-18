@@ -1,0 +1,108 @@
+FORMAT: 1A
+HOST: http://api.minepay.net/v1/
+
+# Minepay API
+
+An API allowing easy remote management of your store as well as data retrieval.
+All requests require the `key` parameter to be set unless specified.
+
+## Group Products
+
+Retrieve and update products.
+
+A `Product` object has the following attributes:
+
++ id - the product ID
++ name - the product name
++ cost - the cost of the product
+
+## Product [/product/{id}]
+
++ Parameters
+    + id (string, required) - the ID of the product you wish to view
+
+### Display Product [GET]
+
++ Response 200 (application/json)
+
+        {
+            "id": 1,
+            "name": "Extra Diamonds",
+            "cost": 2.50
+        }
+        
+### Delete Product [DELETE]
+
++ Response 200 (application/json)
+
+        {
+            "message": "Product deletion successful!"
+        }
+
+
+## Product Collection [/product/all]
+
+### All Products [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 1,
+                "name": "Extra Diamonds",
+                "cost": 2.50
+            },
+            {
+                "id": 2,
+                "name": "Extra Emeralds",
+                "cost": 5.00
+            }
+        ]
+        
+### Create Product [POST]
+
++ name - the name of the product
++ cost - the cost of the product
+
++ Request (application/json)
+    
+        {
+            "name": "Extra Arrows",
+            "cost": 0.15
+        }
+
++ Response 200 (application/json)
+
+    + Headers
+    
+            Location: /product/1
+
+    + Body
+    
+            {
+                "message": "Product creation successful!"
+                "product": {
+                    "id": 1,
+                    "name": "Extra Arrows",
+                    "cost": 0.15
+                }
+            }
+
+
+## Purchased Products [/product/users/{user_id}]
+
++ Parameters
+    + user_id (number, required) - the ID of the user
+    
+### All Products [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 5,
+                "name": "Veteran Chestplate",
+                "cost": 0.00
+            }
+        ]
+    
