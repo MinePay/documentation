@@ -112,6 +112,7 @@ want to update, omitting the others is fine.
 ## Purchased Products [/product/users/{user_id}]
 
 + Parameters
+    
     + user_id (number, required) - the ID of the user
     
 ### All Products [GET]
@@ -125,3 +126,23 @@ want to update, omitting the others is fine.
                 "cost": 0.00
             }
         ]
+        
+## Group Categories
+
+A `Category` object has the following properties:
+
++ id - internal category ID
++ name - category display name
+
+## Category [/category/{id}]
+
++ id (string, required)
+
+### View Category [GET]
+
++ Response 200 (application/json)
+
+        {
+            "id": 1,
+            "name": "Extra Items"
+        }
